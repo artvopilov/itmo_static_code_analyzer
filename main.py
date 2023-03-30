@@ -1,3 +1,5 @@
+from typing import List
+
 import click
 import sys
 
@@ -7,13 +9,15 @@ from src.io_utils import IOUtils
 
 
 @click.command()
-@click.option('--source-file', '-s', required=True, type=str)
-def main(source_file: str) -> None:
-    source_code = IOUtils.read_file(source_file)
-
+@click.option('--source-files', '-s', required=True, multiple=True)
+def main(source_files: List[str]) -> None:
     analyzer = UnusedImportChecker()
-    result = analyzer.check(source_code)
-    sys.exit(result)
+    exit_code = 0
+    for source_file in source_files:
+        source_code = IOUtils.read_file(source_file)
+        result = analyzer.check(source_code)
+        exit_code = max(exit_code, result)
+    sys.exit(exit_code)
 
 
 if __name__ == '__main__':
