@@ -1,7 +1,7 @@
 name: analyzer
 on: [workflow_dispatch]
 jobs:
-  pylint:
+  analyzer:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -11,4 +11,4 @@ jobs:
           virtualenvs-create: true
           virtualenvs-in-project: true
       - run: poetry install --no-interaction --no-root
-      - run: poetry run python main.py -s src/analyzer.py -s src/io_utils.py
+      - run: poetry run python main.py -s src/analyzer.py -s src/io_utils.py -s tests/test1.py -s tests/test2.py
