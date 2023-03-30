@@ -1,6 +1,6 @@
 import math
 
 
-num_1 = 1
-num_2 = 2
-print(math.fsum(num_1, num_2))
+NUM_1 = 1
+NUM_2 = 2
+print(math.fsum(NUM_1, NUM_2))

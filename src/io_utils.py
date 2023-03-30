@@ -1,3 +1,5 @@
+# pylint: disable=unspecified-encoding
+# pylint: disable=too-few-public-methods
 class IOUtils:
     @staticmethod
     def read_file(path) -> str:

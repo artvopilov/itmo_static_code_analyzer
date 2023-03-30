@@ -1,6 +1,6 @@
 import math
 
 
-num_1 = 1
-num_2 = 2
-print(num_1 + num_2)
+NUM_1 = 1
+NUM_2 = 2
+print(NUM_1 + NUM_2)
