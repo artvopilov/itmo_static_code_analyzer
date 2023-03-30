@@ -1,3 +1,4 @@
+# pylint: disable=invalid-name
 import ast
 
 from loguru import logger
