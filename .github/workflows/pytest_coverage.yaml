@@ -12,6 +12,4 @@ jobs:
           virtualenvs-in-project: true
       - run: poetry install --no-interaction --no-root
       - run: poetry run pytest --cache-clear --cov=src tests/ > pytest-coverage.txt
-      - uses: coroo/pytest-coverage-commentator@v1.0.2
-        with:
-          pytest-coverage: pytest-coverage.txt
+      - run: cat pytest-coverage.txt
