@@ -12,7 +12,8 @@ class Analyzer(ast.NodeVisitor):
     _names: Set[str]
 
     def __int__(self) -> None:
-        self._reset()
+        self.imports = set()
+        self.names = set()
 
     def check(self, source_code) -> int:
         self._reset()
@@ -30,7 +31,7 @@ class Analyzer(ast.NodeVisitor):
             if name not in self.names:
                 result = 1
                 logger.warning(f':{line}: unused import \'{name}\'')
-        return result
+        return 1
 
     def visit_Import(self, node):
         self._add_imports(node)
