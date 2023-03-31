@@ -11,7 +11,7 @@ class Analyzer(ast.NodeVisitor):
     _imports: Set[str]
     _names: Set[str]
 
-    def __int__(self) -> None:
+    def __init__(self) -> None:
         self.imports = set()
         self.names = set()
 
@@ -31,7 +31,7 @@ class Analyzer(ast.NodeVisitor):
             if name not in self.names:
                 result = 1
                 logger.warning(f':{line}: unused import \'{name}\'')
-        return 1
+        return result
 
     def visit_Import(self, node):
         self._add_imports(node)
