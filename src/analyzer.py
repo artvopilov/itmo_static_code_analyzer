@@ -11,6 +11,9 @@ class Analyzer(ast.NodeVisitor):
     _imports: Set[str]
     _names: Set[str]
 
+    def __int__(self) -> None:
+        self._reset()
+
     def check(self, source_code) -> int:
         self._reset()
         tree = ast.parse(source_code)
@@ -18,7 +21,6 @@ class Analyzer(ast.NodeVisitor):
         return self._report()
 
     def _reset(self) -> None:
-        self.violations = []
         self.imports = set()
         self.names = set()
 
