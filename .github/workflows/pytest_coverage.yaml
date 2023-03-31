@@ -1,7 +1,7 @@
-name: analyzer
+name: pylint
 on: [workflow_dispatch, push]
 jobs:
-  analyzer:
+  pylint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -11,4 +11,5 @@ jobs:
           virtualenvs-create: true
           virtualenvs-in-project: true
       - run: poetry install --no-interaction --no-root
-      - run: poetry run python main.py -s src/analyzer.py -s src/io_utils.py
+      - run: poetry run pytest --cache-clear --cov=src tests/ > pytest-coverage.txt
+      - uses: coroo/pytest-coverage-commentator@v1.0.2
