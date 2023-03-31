@@ -25,8 +25,6 @@ class Analyzer(ast.NodeVisitor):
     def _report(self) -> int:
         result = 0
         for name, line in self.imports:
-            print(name, line)
-            print(self.names)
             if name not in self.names:
                 result = 1
                 logger.warning(f':{line}: unused import \'{name}\'')
